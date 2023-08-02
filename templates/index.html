@@ -1,13 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website Title</title>
+  <style>
+
+    /* Add your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    section a{
+      padding: 2rem;
+    }
+
+
+    section {
+      padding: 2rem;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+  </style>
 </head>
+
+
+
 <body>
+  <header>
+    <h1>Flask testing</h1>
+    <p>Flask Testing Website</p>
+  </header>
+ 
+
+  <section>
+    <a href="home">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
     <h1>Home page</h1>
-    <p>Hello!</p>
-    
+    <p>{{name}}</p> 
+
+    <!-- we can write python code inside the html file -->
+    {% for i in content %}
+        <p>{{i}}</p>
+    {% endfor %}
+  </section>
+  
+
+
+  <section> 
+   
+
+
+    <h2>About Us</h2>
+    <p>This is about section</p>
+  </section>
+
+  <footer>
+    <!-- Add your footer content here -->
+    <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+  </footer>
+
 </body>
+
 </html>
