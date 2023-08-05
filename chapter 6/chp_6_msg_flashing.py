@@ -28,8 +28,10 @@ def login():
         if "user" in session:
             flash("Already Logged In!", "info")
             return redirect(url_for("user"))
-
         return render_template("login.html")
+
+
+
 
 
 #checking the session is created or not
