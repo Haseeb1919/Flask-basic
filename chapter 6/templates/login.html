@@ -2,6 +2,18 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+    {% with messages = get_flashed_messages()%}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+
+
     <div style="max-width: 400px; margin: 0 auto; padding: 20px;">
         <form action="#" method="post">
             <div style="margin-bottom: 20px;">
