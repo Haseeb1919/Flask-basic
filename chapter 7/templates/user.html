@@ -68,7 +68,7 @@
 
 <body>
     <div class="container">
-        <h1>Welcome, {{ user }}</h1>
+        <h1>Welcome</h1>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul>
@@ -78,11 +78,10 @@
         </ul>
         {% endif %}
         {% endwith %}
+        <a href="{{ url_for('home') }}" class="btn btn-primary">Home</a>
         <a href="{{ url_for('logout') }}">Logout</a>
-        <form action="#", method="post">
-            <input type="email" name="email" placeholder="Enter email" value="{{email if email}}"/>
-            <input type="submit" value="submit">
-        </form>
+        <a href="{{ url_for('view') }}">view page</a>
+        
 
 
     </div>

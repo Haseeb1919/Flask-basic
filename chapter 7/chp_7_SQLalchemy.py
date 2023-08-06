@@ -44,25 +44,24 @@ def view():
 # GET and POST are the two types of HTTP requests.
 @app.route("/login", methods=["POST", "GET"])
 def login():
-    if (request.method == "POST"):
+    if request.method == "POST":
         session.permanent = True
         user = request.form["username"]
-        #session is a dictionary that stores data across requests
+        email = request.form["email"]
+        # Session is a dictionary that stores data across requests
         session["user"] = user
+        session["email"] = email  # Store the email in the session
         flash(f"Login Successful! {user}", "info")
 
-
         found_user = users.query.filter_by(name=user).first()
-        #adding user to the database and checking if the user already exists
+        # Adding user to the database and checking if the user already exists
         if found_user:
             session["email"] = found_user.email
         else:
-            usr = users(user, "")
+            usr = users(user, email)  # Store the email in the database
             db.session.add(usr)
-            db.session.commit()
+        db.session.commit()
 
-
-                
         return redirect(url_for("user"))
     else:
         if "user" in session:
@@ -71,32 +70,15 @@ def login():
         return render_template("login.html")
 
 
-
-
-
 #checking the session is created or not
-@app.route("/user", methods=["POST", "GET"])
+@app.route("/user", methods=["GET"])
 def user():
-    email = None
     if "user" in session:
         user = session["user"]
-        if (request.method == "POST"):
-            email = request.form["email"]
-            session["email"] = email
-            found_user = users.query.filter_by(name=user).first()
-            found_user.email = email
-            db.session.commit()
-            flash("Email was saved!", "info")
-
-        else:
-            if "email" in session:
-                email = session["email"]
-
-        return render_template("user.html", email=email)
+        return render_template("user.html", email=session.get("email"))
     else:
         flash("You are not logged in!", "info")
         return redirect(url_for("login"))
-
 
 #deleting the session
 @app.route("/logout")
