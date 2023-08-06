@@ -79,6 +79,12 @@
         {% endif %}
         {% endwith %}
         <a href="{{ url_for('logout') }}">Logout</a>
+        <form action="#", method="post">
+            <input type="email" name="email" placeholder="Enter email" value="{{email if email}}"/>
+            <input type="submit" value="submit">
+        </form>
+
+
     </div>
 </body>
 
