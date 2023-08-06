@@ -1,0 +1,13 @@
+
+
+{% block content %}
+    <h1>Database table page</h1>
+    {% for item in values %}
+    
+    <ul>
+        <li>Username: {{ item.name}}</li>
+        <li>Email: {{ item.email }}</li>
+    </ul>
+    {% endfor %}
+{% endblock %}
+
